@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DHANKESARI RAJSHREE PUNJAB LOTTERY RESULT</title>
+  <meta name="description" content="DHANKESARI RAJSHREE PUNJAB LOTTERY RESULT — single-file Supabase realtime app with admin, archive, scheduling, live draw." />
+  <meta name="theme-color" content="#c62828" />
+  <style>
+    :root{ --brand-red:#c62828; --brand-dark:#7a1414; --bg:#faf7f6; --card:#fff; --muted:#666; --accent:#2e8b57; --maxw:1200px; font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif; }
+    *{box-sizing:border-box} html,body{height:100%;margin:0;background:var(--bg);color:#111;-webkit-font-smoothing:antialiased}
+    header.sitebar{background:linear-gradient(90deg,var(--brand-red),#b71c1c 60%);color:#fff;padding:12px 18px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:1200;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+    .brand{font-weight:900;font-size:20px}
+    .brand-sub{margin-left:8px;font-size:13px;opacity:.95;font-weight:600}
+    .topnav{margin-left:auto;display:flex;gap:8px;align-items:center}
+    .nav-link{color:#fff;background:transparent;border:0;padding:8px 10px;cursor:pointer;font-weight:700;border-radius:6px}
+    .admin-btn{background:#fff;color:var(--brand-red);padding:8px 12px;border-radius:6px;border:0;font-weight:800;cursor:pointer}
+
+    main.container{max-width:var(--maxw);margin:18px auto;padding:0 16px 80px}
+    h1.center{text-align:center;margin:10px 0;font-size:20px;color:var(--brand-dark)}
+    .layout{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+    @media(max-width:980px){.layout{grid-template-columns:1fr}}
+    .card{background:var(--card);padding:16px;border-radius:10px;border:1px solid rgba(0,0,0,.04);box-shadow:0 8px 20px rgba(0,0,0,.03)}
+    .muted{color:var(--muted)}
+    .slots{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .slot{width:260px;padding:14px;border-radius:8px;border:1px solid #eee;text-align:center;background:linear-gradient(#fff,#fcfcfc)}
+    .slot h4{margin:6px 0}
+    .meta{font-size:13px;color:#444;margin-top:6px}
+    .status{font-size:13px;color:var(--muted)}
+    .btn{padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+    .btn.primary{background:var(--brand-red);color:#fff}
+    .btn.ghost{background:#f4f4f4}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .old-list{display:flex;flex-direction:column;gap:8px;max-height:520px;overflow:auto;padding-right:6px}
+    .old-item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:8px;border:1px solid #f0f0f0;background:#fafafa;gap:8px}
+    .search-row{display:flex;gap:8px;align-items:center;margin-top:8px}
+    .search-row input{flex:1;padding:8px;border-radius:6px;border:1px solid #ddd}
+    .log-list{max-height:240px;overflow:auto;font-family:monospace;font-size:13px;padding:8px;background:#111;color:#fff;border-radius:6px}
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.45);padding:16px;z-index:10000}
+    .modal[aria-hidden="false"]{display:flex}
+    .modal-box{background:#fff;padding:16px;border-radius:10px;width:100%;max-width:980px;max-height:92vh;overflow:auto;position:relative}
+    .close-x{position:absolute;right:10px;top:10px;border:0;background:transparent;font-size:22px;cursor:pointer}
+    .toast{position:fixed;right:16px;bottom:16px;background:#222;color:#fff;padding:10px 14px;border-radius:8px;opacity:0;transition:opacity 200ms;z-index:10001}
+    .sw-indicator{font-size:12px;color:#fff;padding:4px 8px;border-radius:6px;background:#444;margin-left:8px;opacity:.95}
+    label{display:block;margin:8px 0}
+    input[type=text],select,input[type=datetime-local], textarea{padding:8px;border-radius:6px;border:1px solid #ddd;width:100%;box-sizing:border-box}
+    .video-wrap{display:flex;justify-content:center}
+    .video-box{width:720px;max-width:100%;height:405px;border-radius:8px;overflow:hidden;border:1px solid #ddd;background:#000}
+    footer{background:var(--brand-red);color:#fff;padding:12px 18px;text-align:center;margin-top:30px}
+    .small{font-size:13px;color:var(--muted)}
+    .conf-area{height:140px;font-family:monospace;white-space:pre-wrap;overflow:auto}
+  </style>
+</head>
+<body>
+  <header class="sitebar" role="banner">
+    <div>
+      <div class="brand">DHANKESARI RAJSHREE PUNJAB LOTTERY RESULT</div>
+      <div class="brand-sub">Live results • Archive • Admin</div>
+    </div>
+    <nav class="topnav" role="navigation">
+      <button id="navToday" class="nav-link">Today's Results</button>
+      <button id="navOld" class="nav-link">Old Results</button>
+      <button id="navLive" class="nav-link">Live Draw</button>
+      <button id="openAdmin" class="admin-btn">ADMIN</button>
+      <span id="swIndicator" class="sw-indicator" style="display:none">Realtime</span>
+    </nav>
+  </header>
+
+  <main class="container" role="main">
+    <h1 class="center">DHANKESARI RAJSHREE PUNJAB LOTTERY RESULT</h1>
+
+    <!-- TODAY -->
+    <section id="pageToday" style="display:block">
+      <div class="layout">
+        <section class="card" aria-labelledby="todayTitle">
+          <h2 id="todayTitle">Live Result Slots</h2>
+          <p class="muted">Latest published PDFs per slot. Use Admin to upload/schedule. Realtime via Supabase.</p>
+
+          <div class="slots" id="slotsArea" role="list">
+            <div class="slot" data-slot="dear_1pm">
+              <h4>DEAR 1:00 PM WEEKLY</h4>
+              <div id="status-dear_1pm" class="status">Loading status...</div>
+              <div id="meta-dear_1pm" class="meta"></div>
+              <button id="open-dear_1pm" class="btn ghost" aria-disabled="true">Open PDF</button>
+            </div>
+            <div class="slot" data-slot="dear_6pm">
+              <h4>DEAR 6:00 PM WEEKLY</h4>
+              <div id="status-dear_6pm" class="status">Loading status...</div>
+              <div id="meta-dear_6pm" class="meta"></div>
+              <button id="open-dear_6pm" class="btn ghost" aria-disabled="true">Open PDF</button>
+            </div>
+            <div class="slot" data-slot="dear_8pm">
+              <h4>DEAR 8:00 PM WEEKLY</h4>
+              <div id="status-dear_8pm" class="status">Loading status...</div>
+              <div id="meta-dear_8pm" class="meta"></div>
+              <button id="open-dear_8pm" class="btn ghost" aria-disabled="true">Open PDF</button>
+            </div>
+          </div>
+
+          <div style="height:14px"></div>
+
+          <div id="publishedCard" class="card" aria-live="polite" style="padding:12px">
+            <h3 style="margin-top:0">Recent Published Files</h3>
+            <div id="publishedList" class="muted">Loading recent published files...</div>
+          </div>
+        </section>
+
+        <aside class="card">
+          <h3>Actions & Status</h3>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button id="refreshBtn" class="btn">Refresh Now</button>
+            <button id="exportArchiveBtn" class="btn ghost">Export Archive (CSV)</button>
+            <div style="height:6px"></div>
+            <h4 style="margin:6px 0">Realtime</h4>
+            <div id="realtimeStatus" class="muted">Connecting...</div>
+            <h4 style="margin:6px 0">Local Storage</h4>
+            <div id="localStatus" class="muted">Fallback ready</div>
+            <div style="height:8px"></div>
+            <h4 style="margin:6px 0">Action Log</h4>
+            <pre id="actionLog" class="log-list">No actions yet.</pre>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- OLD -->
+    <section id="pageOld" style="display:none">
+      <div class="card">
+        <h2>Old Results Archive</h2>
+        <p class="muted">Search and download archived results.</p>
+        <div class="search-row">
+          <input id="oldSearch" type="text" placeholder="Search filename, slot or notes" />
+          <button id="oldSearchBtn" class="btn">Search</button>
+          <button id="oldClearBtn" class="btn ghost">Clear</button>
+          <button id="exportCsv" class="btn ghost">Export CSV</button>
+        </div>
+        <div style="height:12px"></div>
+        <div id="oldList" class="old-list">Loading archived results...</div>
+      </div>
+    </section>
+
+    <!-- LIVE -->
+    <section id="pageLive" style="display:none">
+      <div class="card">
+        <h2>LIVE DRAW</h2>
+        <p class="muted">Live YouTube draw. Admin can set the YouTube watch URL.</p>
+        <div id="liveContainer" class="video-wrap">
+          <div id="noLive" class="small muted">No live video set. Admin can add YouTube link.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ADMIN MODAL -->
+  <div id="adminModal" class="modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+      <button class="close-x" id="closeModal" aria-label="Close">×</button>
+      <h2 id="adminTitle">Admin Panel</h2>
+
+      <div id="adminCreate" style="display:none">
+        <p class="muted">Create local admin (stored hashed only in this browser).</p>
+        <form id="createForm">
+          <label>Username <input id="createUser" required /></label>
+          <label>Password <input id="createPass" type="password" required /></label>
+          <label>Confirm <input id="createPass2" type="password" required /></label>
+          <div style="margin-top:8px">
+            <button class="btn primary" type="submit">Create Admin</button>
+            <button class="btn ghost" type="button" id="createCancel">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="adminLogin" style="display:none">
+        <p class="muted">Login to manage uploads, schedule, archive and live video.</p>
+        <form id="loginLocalForm">
+          <label>Username <input id="loginUser" required /></label>
+          <label>Password <input id="loginPass" type="password" required /></label>
+          <div style="margin-top:8px">
+            <button class="btn primary" type="submit">Login</button>
+            <button class="btn ghost" type="button" id="loginCancel">Close</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="adminPanel" style="display:none">
+        <h3>Upload & Schedule PDF</h3>
+        <form id="uploadForm">
+          <label>Slot
+            <select id="slotSelect">
+              <option value="dear_1pm">DEAR 1:00 PM WEEKLY</option>
+              <option value="dear_6pm">DEAR 6:00 PM WEEKLY</option>
+              <option value="dear_8pm">DEAR 8:00 PM WEEKLY</option>
+            </select>
+          </label>
+          <label>Choose PDF <input id="uploadPdf" type="file" accept="application/pdf" /></label>
+          <label>Publish Date & Time <input id="uploadPublishAt" type="datetime-local" /></label>
+          <div style="margin-top:8px"><button class="btn primary" type="submit">Upload & Schedule</button> <button class="btn ghost" id="adminLogout" type="button">Logout</button></div>
+        </form>
+
+        <hr />
+
+        <h3>Live YouTube Video</h3>
+        <p class="muted">Paste a YouTube watch URL (e.g., https://www.youtube.com/watch?v=VIDEO_ID)</p>
+        <label>YouTube URL <input id="liveUrl" type="text" placeholder="https://www.youtube.com/watch?v=..." /></label>
+        <div style="margin-top:8px"><button id="saveLiveUrl" class="btn primary">Save Live Link</button> <button id="clearLiveUrl" class="btn ghost">Remove Live Link</button></div>
+
+        <hr />
+
+        <h3>Supabase</h3>
+        <p class="muted">This file is configured to use Supabase. Replace keys below if you want to change.</p>
+        <textarea id="supabaseConfigArea" class="conf-area" placeholder='Leave as-is or paste JSON to override'></textarea>
+        <div style="margin-top:8px">
+          <button id="saveSupabaseConfig" class="btn primary">Save Config</button>
+          <button id="clearSupabaseConfig" class="btn ghost">Clear</button>
+        </div>
+        <div style="height:8px"></div>
+        <div><button id="initSupabase" class="btn">Init Supabase</button> <span id="supabaseStatus" class="small muted">Not initialized</span></div>
+
+        <hr />
+
+        <h3>Archive</h3>
+        <form id="archiveForm">
+          <label>Archive PDF <input id="archiveFile" type="file" accept="application/pdf" /></label>
+          <label>Notes <input id="archiveNotes" type="text" /></label>
+          <div style="margin-top:8px"><button id="archiveSave" class="btn">Save to Archive</button></div>
+        </form>
+
+        <div style="height:12px"></div>
+        <h4>Pending Scheduled Items</h4>
+        <div id="schedList" class="muted">Loading scheduled items...</div>
+
+        <div style="height:12px"></div>
+        <h4>Action Log (local)</h4>
+        <pre id="actionLog" class="log-list">No actions yet.</pre>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <footer>© Dhankesari — Realtime via Supabase</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+/*
+  Single-file Supabase-powered front-end
+  - Uses Supabase Realtime + Storage
+  - Requires a storage bucket named: "lottery-pdfs" (create in Supabase UI)
+  - Requires tables (SQL below provided in comments)
+  - Admin remains local (BIJAY / BIJAY714100) for now
+*/
+
+// ---- YOUR SUPABASE KEYS (provided) ----
+const SUPABASE_URL = 'https://myvgufsxqknhqruipvry.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im15dmd1ZnN4cWtuaHFydWlwdnJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMzMDY4MTQsImV4cCI6MjA3ODg4MjgxNH0.CzCJ0TdtzO5Jgz_yqhWNQpKQa9yR8M5te5yf06eAYdY';
+
+// create supabase client using different variable name to avoid TDZ
+const supabaseClient = window.supabase && window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// Helpful DOM helpers
+function el(id){ return document.getElementById(id); }
+function showToast(msg){ const t = el('toast'); if(!t) return; t.textContent = msg; t.style.opacity = '1'; setTimeout(()=> t.style.opacity='0', 3000); }
+function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function safeSetDisplay(id, d){ const e = el(id); if(e) e.style.display = d; }
+
+// Admin seed (local)
+(function seedAdmin(){ try{ if(!localStorage.getItem('dh_admin')){ localStorage.setItem('dh_admin', JSON.stringify({ username: 'BIJAY', password: 'BIJAY714100' })); } }catch(e){ console.warn(e); } })();
+function verifyAdmin(u,p){ try{ const rec = JSON.parse(localStorage.getItem('dh_admin')||'{}'); return rec.username===u && rec.password===p; }catch(e){ return false; } }
+
+// Action log (local, kept in localStorage for audit)
+async function logAction(type, note){ try{ const arr = JSON.parse(localStorage.getItem('dh_actions')||'[]'); arr.push({ type, note, ts: new Date().toISOString() }); localStorage.setItem('dh_actions', JSON.stringify(arr)); renderLog(); }catch(e){ console.warn(e); } }
+function renderLog(){ const arr = JSON.parse(localStorage.getItem('dh_actions')||'[]'); if(!arr.length) { const al = el('actionLog'); if(al) al.textContent = 'No actions yet.'; } else { const al = el('actionLog'); if(al) al.textContent = arr.slice().reverse().map(i => `${new Date(i.ts).toLocaleString()} • ${i.type} • ${i.note}`).join('\n'); } }
+
+// Local published helper for fallback
+function addLocalPublished(rec){ try{ const arr = JSON.parse(localStorage.getItem('dh_published')||'[]'); arr.push(rec); localStorage.setItem('dh_published', JSON.stringify(arr)); }catch(e){ console.warn(e); } }
+
+// Supabase helpers (use supabaseClient variable)
+async function initRealtime(){ try{
+  if(!supabaseClient) throw new Error('Supabase client not initialized');
+  // subscribe to published table changes
+  supabaseClient.channel('public:published')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'published' }, payload => { console.log('published change', payload); renderPublished(); })
+    .subscribe();
+
+  supabaseClient.channel('public:archive')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'archive' }, payload => { console.log('archive change', payload); renderArchive(); })
+    .subscribe();
+
+  supabaseClient.channel('public:live')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'live' }, payload => { console.log('live change', payload); renderLive(); })
+    .subscribe();
+
+  el('realtimeStatus').textContent = 'Realtime connected';
+  showToast('Realtime initialized');
+}catch(e){ console.warn('Realtime init failed', e); if(el('realtimeStatus')) el('realtimeStatus').textContent = 'Realtime not available'; startPolling(); } }
+
+function startPolling(){ // fallback to polling every 10s
+  if(window._polling) return; window._polling = setInterval(()=>{ renderPublished(); renderArchive(); renderLive(); }, 10000); }
+
+// Storage helpers
+async function uploadPdfToStorage(file){
+  try{
+    if(!supabaseClient) throw new Error('Supabase client not initialized');
+    const path = `lottery-pdfs/${Date.now()}_${file.name.replace(/[^a-z0-9.\-]/gi, '_')}`;
+    const res = await supabaseClient.storage.from('lottery-pdfs').upload(path, file, { cacheControl: '3600', upsert: false });
+    if(res.error) throw res.error;
+    const { data } = supabaseClient.storage.from('lottery-pdfs').getPublicUrl(path);
+    return data.publicUrl;
+  }catch(e){ console.error('upload error', e); throw e; }
+}
+
+// CRUD: Published, Archive, Live, Schedules
+async function fetchPublished(){ try{ if(!supabaseClient) throw new Error('no client'); const { data, error } = await supabaseClient.from('published').select('*').order('publishedAt', { ascending: false }).limit(100); if(error) throw error; return data || []; }catch(e){ console.warn('fetchPublished fallback', e); return JSON.parse(localStorage.getItem('dh_published')||'[]'); } }
+async function fetchArchive(){ try{ if(!supabaseClient) throw new Error('no client'); const { data, error } = await supabaseClient.from('archive').select('*').order('createdAt', { ascending: false }).limit(200); if(error) throw error; return data || []; }catch(e){ console.warn('fetchArchive fallback', e); return JSON.parse(localStorage.getItem('dh_archive')||'[]'); } }
+async function fetchLive(){ try{ if(!supabaseClient) throw new Error('no client'); const { data, error } = await supabaseClient.from('live').select('*').order('updatedAt', { ascending: false }).limit(1); if(error) throw error; return data && data.length ? data[0] : null; }catch(e){ console.warn('fetchLive fallback', e); return { url: localStorage.getItem('dh_live_url') || null }; } }
+async function fetchSchedules(){ try{ if(!supabaseClient) throw new Error('no client'); const { data, error } = await supabaseClient.from('schedules').select('*').order('publishAt', { ascending: true }).limit(500); if(error) throw error; return data || []; }catch(e){ console.warn('fetchSchedules fallback', e); return JSON.parse(localStorage.getItem('dh_pending')||'[]'); } }
+
+// Renderers
+async function renderPublished(){ const arr = await fetchPublished(); const html = (arr.length ? arr.map(i => `<div><a href="${escapeHtml(i.fileUrl||'#')}" target="_blank">${escapeHtml(i.slot||'')} — ${escapeHtml(i.filename||'')} — ${new Date(i.publishedAt).toLocaleString()}</a></div>`).join('') : '<div class="muted">No published files</div>'); safeSetHTML('publishedList', html);
+  const latest = {}; arr.forEach(i => { if(i.slot && !latest[i.slot]) latest[i.slot]=i; }); ['dear_1pm','dear_6pm','dear_8pm'].forEach(s=>{ const st = el('status-'+s); const mt = el('meta-'+s); const btn = el('open-'+s); const info = latest[s]; if(info){ if(st) st.textContent='Published'; if(mt) mt.textContent=(new Date(info.publishedAt).toLocaleString())+' • '+(info.filename||''); if(btn){ btn.classList.remove('ghost'); btn.onclick = ()=> window.open(info.fileUrl || info.publicUrl || '#', '_blank'); } } else { if(st) st.textContent='Not published'; if(mt) mt.textContent=''; if(btn){ btn.classList.add('ghost'); btn.onclick = ()=> alert('No published file'); } } }); }
+
+async function renderArchive(){ const arr = await fetchArchive(); if(!arr.length) { safeSetHTML('oldList', '<div class="muted">No archived results</div>'); return; } const html = arr.map((it, idx) => `<div class="old-item"><div><strong>${escapeHtml(it.filename)}</strong><div class="muted">${escapeHtml(it.notes||'')} • ${new Date(it.createdAt).toLocaleString()}</div></div><div><button data-id="${it.id||idx}" class="btn open-arch">Open</button> <button data-id="${it.id||idx}" class="btn ghost del-arch">Delete</button></div></div>`).join(''); safeSetHTML('oldList', html);
+  document.querySelectorAll('.open-arch').forEach(b=> b.addEventListener('click', async (ev)=>{ const id = b.dataset.id; const recs = await fetchArchive(); const rec = recs.find(x=> String(x.id)===String(id) || String(recs.indexOf(x))===String(id)); if(!rec) return alert('Not found'); if(rec.fileUrl) window.open(rec.fileUrl,'_blank'); else alert('No file URL'); }));
+  document.querySelectorAll('.del-arch').forEach(b=> b.addEventListener('click', async (ev)=>{ if(!confirm('Delete archive item?')) return; const id = b.dataset.id; try{ if(!supabaseClient) throw new Error('no client'); const { error } = await supabaseClient.from('archive').delete().eq('id', id); if(error) throw error; showToast('Deleted'); renderArchive(); await logAction('archive:delete', `Deleted archive id ${id}`); }catch(e){ console.warn(e); alert('Delete failed'); } })); }
+
+async function renderLive(){ const rec = await fetchLive(); const container = el('liveContainer'); const noLive = el('noLive'); if(!container) return; if(!rec || !rec.url){ container.innerHTML = ''; if(noLive) noLive.style.display = ''; return; } if(noLive) noLive.style.display = 'none'; try{ const u = new URL(rec.url); const vid = u.searchParams.get('v') || u.pathname.split('/').pop(); if(!vid){ container.innerHTML = '<div class="small muted">Invalid YouTube URL</div>'; return; } const src = 'https://www.youtube.com/embed/' + vid + '?rel=0'; container.innerHTML = '<div class="video-box"><iframe src="'+src+'" frameborder="0" allowfullscreen style="width:100%;height:100%"></iframe></div>'; }catch(e){ container.innerHTML = '<div class="small muted">Invalid YouTube URL</div>'; } }
+
+// Scheduling worker: client-side tick that publishes scheduled items (demo). For production, use server cron.
+setInterval(async ()=>{ try{ const schedules = await fetchSchedules(); const now = new Date(); for(const s of schedules){ if(s.published) continue; const publishAt = new Date(s.publishAt); if(publishAt <= now){ if(!supabaseClient){ // fallback - move to local published
+        addLocalPublished({ slot: s.slot, filename: s.filename, fileUrl: s.fileUrl||'#', publishedAt: new Date().toISOString(), publisher: s.publisher }); continue; }
+      const { error } = await supabaseClient.from('published').insert([{ slot: s.slot, filename: s.filename, fileUrl: s.fileUrl || s.publicUrl || null, publishedAt: new Date().toISOString(), publisher: s.publisher }]);
+      if(error){ console.warn('publish insert error', error); continue; }
+      await supabaseClient.from('schedules').update({ published: true }).eq('id', s.id);
+      await logAction('publish:remote', `Published ${s.filename} for ${s.slot}`);
+    }
+  }
+}catch(e){ /* ignore */ } }, 4000);
+
+// UI actions
+async function initSupabaseUI(){ try{ if(!supabaseClient) throw new Error('no client'); el('supabaseStatus').textContent = 'Initializing...'; await initRealtime(); await renderPublished(); await renderArchive(); await renderLive(); renderLog(); el('supabaseStatus').textContent = 'Connected'; }catch(e){ console.warn(e); if(el('supabaseStatus')) el('supabaseStatus').textContent = 'Init failed'; startPolling(); } }
+
+async function uploadAndSchedule(file, slot, publishAt, publisher){ try{ const publicUrl = await uploadPdfToStorage(file); if(!supabaseClient) throw new Error('no client'); const { data, error } = await supabaseClient.from('schedules').insert([{ slot, filename: file.name, fileUrl: publicUrl, publishAt: new Date(publishAt).toISOString(), publisher, published: false }]); if(error) throw error; showToast('Scheduled (cloud)'); await logAction('upload:remote', `${file.name} scheduled for ${slot} at ${publishAt}`); renderScheduled(); renderPublished(); return data; }catch(e){ console.warn('upload failed, fallback local', e); const pending = JSON.parse(localStorage.getItem('dh_pending')||'[]'); pending.push({ slot, filename: file.name, publishAt: new Date(publishAt).toISOString(), publisher }); localStorage.setItem('dh_pending', JSON.stringify(pending)); addLocalPublished({ slot, filename: file.name, fileUrl: '#', publishedAt: new Date().toISOString(), publisher }); await logAction('upload:local', `${file.name} scheduled locally`); renderScheduled(); renderPublished(); return null; } }
+
+async function renderScheduled(){ try{ const arr = await fetchSchedules(); if(!arr.length) return safeSetHTML('schedList', '<div class="muted">No pending scheduled items</div>'); const pending = arr.filter(a=>!a.published).map(p=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:6px;border:1px solid #eee;margin-bottom:6px"><div><strong>${escapeHtml(p.filename)}</strong><div class="muted">${escapeHtml(p.slot)} • ${new Date(p.publishAt).toLocaleString()} • ${escapeHtml(p.publisher||'')}</div></div><div><button data-id="${p.id}" class="btn ghost del-sched">Delete</button></div></div>`).join(''); safeSetHTML('schedList', pending || '<div class="muted">No pending scheduled items</div>'); document.querySelectorAll('.del-sched').forEach(b=> b.addEventListener('click', async (ev)=>{ if(!confirm('Delete scheduled item?')) return; const id = b.dataset.id; try{ if(!supabaseClient) throw new Error('no client'); const { error } = await supabaseClient.from('schedules').delete().eq('id', id); if(error) return alert('Delete failed'); renderScheduled(); renderPublished(); await logAction('scheduled:delete', `Deleted scheduled id ${id}`); }catch(e){ console.warn(e); alert('Delete failed'); } })); }catch(e){ console.warn(e); const pending = JSON.parse(localStorage.getItem('dh_pending')||'[]'); if(!pending.length) return safeSetHTML('schedList','<div class="muted">No pending scheduled items (local)</div>'); safeSetHTML('schedList', pending.map((p,i)=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:6px;border:1px solid #eee;margin-bottom:6px"><div><strong>${escapeHtml(p.filename)}</strong><div class="muted">${escapeHtml(p.slot)} • ${new Date(p.publishAt).toLocaleString()}</div></div><div><button data-i="${i}" class="btn ghost del-sched-local">Delete</button></div></div>`).join('')); document.querySelectorAll('.del-sched-local').forEach(b=> b.addEventListener('click', ()=>{ const i = b.dataset.i; const arr = JSON.parse(localStorage.getItem('dh_pending')||'[]'); arr.splice(i,1); localStorage.setItem('dh_pending', JSON.stringify(arr)); renderScheduled(); renderPublished(); })); } }
+
+// Archive save
+async function saveArchiveFile(file, notes, publisher){ try{ const publicUrl = await uploadPdfToStorage(file); if(!supabaseClient) throw new Error('no client'); const { error } = await supabaseClient.from('archive').insert([{ filename: file.name, notes, fileUrl: publicUrl, createdAt: new Date().toISOString(), publisher }]); if(error) throw error; showToast('Archived (cloud)'); await logAction('archive:add', `Archived ${file.name}`); renderArchive(); return true; }catch(e){ console.warn('archive save failed', e); const arr = JSON.parse(localStorage.getItem('dh_archive')||'[]'); arr.push({ filename: file.name, notes, createdAt: new Date().toISOString(), publisher }); localStorage.setItem('dh_archive', JSON.stringify(arr)); showToast('Archived (local)'); await logAction('archive:add-local', `Archived ${file.name} locally`); renderArchive(); return false; } }
+
+// Live URL save
+async function saveLiveLink(url, publisher){ try{ if(!supabaseClient) throw new Error('no client'); const { data, error } = await supabaseClient.from('live').upsert([{ id:1, url, updatedAt: new Date().toISOString(), publisher }], { onConflict: 'id' }); if(error) throw error; localStorage.setItem('dh_live_url', url); showToast('Live link saved (cloud)'); await logAction('live:set', `Live set to ${url}`); renderLive(); return true; }catch(e){ console.warn('saveLive failed', e); localStorage.setItem('dh_live_url', url); showToast('Live link saved (local)'); await logAction('live:set-local', `Live set locally to ${url}`); renderLive(); return false; } }
+
+async function clearLiveLink(publisher){ try{ if(!supabaseClient) throw new Error('no client'); const { error } = await supabaseClient.from('live').delete().eq('id',1); if(error) throw error; localStorage.removeItem('dh_live_url'); showToast('Live link removed (cloud)'); await logAction('live:remove', 'Live link removed'); renderLive(); }catch(e){ console.warn('clearLive failed', e); localStorage.removeItem('dh_live_url'); showToast('Live removed (local)'); await logAction('live:remove-local','Live removed locally'); renderLive(); } }
+
+// Safe DOM helper
+function safeSetHTML(id, html){ const e = el(id); if(e) e.innerHTML = html; }
+
+// Wiring after DOM ready
+window.addEventListener('DOMContentLoaded', function(){ try{
+  // nav
+  if(el('navToday')) el('navToday').addEventListener('click', ()=>{ safeSetDisplay('pageToday','block'); safeSetDisplay('pageOld','none'); safeSetDisplay('pageLive','none'); });
+  if(el('navOld')) el('navOld').addEventListener('click', ()=>{ safeSetDisplay('pageToday','none'); safeSetDisplay('pageOld','block'); safeSetDisplay('pageLive','none'); renderArchive(); });
+  if(el('navLive')) el('navLive').addEventListener('click', ()=>{ safeSetDisplay('pageToday','none'); safeSetDisplay('pageOld','none'); safeSetDisplay('pageLive','block'); renderLive(); });
+
+  // admin modal
+  if(el('openAdmin')) el('openAdmin').addEventListener('click', ()=>{ const modal = el('adminModal'); if(modal) modal.setAttribute('aria-hidden','false'); if(el('adminCreate')) el('adminCreate').style.display='none'; if(el('adminLogin')) el('adminLogin').style.display=''; if(el('adminPanel')) el('adminPanel').style.display='none'; });
+  if(el('closeModal')) el('closeModal').addEventListener('click', ()=>{ const modal = el('adminModal'); if(modal) modal.setAttribute('aria-hidden','true'); });
+
+  // login form
+  const loginForm = el('loginLocalForm'); if(loginForm) loginForm.addEventListener('submit', function(ev){ ev.preventDefault(); const u = el('loginUser') ? el('loginUser').value.trim() : ''; const p = el('loginPass') ? el('loginPass').value : ''; if(!verifyAdmin(u,p)){ alert('Invalid credentials'); return; } window.adminSession = { username: u }; if(el('adminLogin')) el('adminLogin').style.display='none'; if(el('adminPanel')) el('adminPanel').style.display=''; showToast('Admin logged in'); renderScheduled(); renderArchive(); renderLog(); });
+
+  // upload form
+  const uploadForm = el('uploadForm'); if(uploadForm) uploadForm.addEventListener('submit', async function(ev){ ev.preventDefault(); if(!window.adminSession) return alert('Login required'); const file = el('uploadPdf') ? el('uploadPdf').files[0] : null; const slot = el('slotSelect') ? el('slotSelect').value : ''; const publishAt = el('uploadPublishAt') ? el('uploadPublishAt').value : ''; if(!file) return alert('Choose PDF'); if(!publishAt) return alert('Set publish date/time'); await uploadAndSchedule(file, slot, publishAt, window.adminSession.username); if(el('uploadPdf')) el('uploadPdf').value=''; if(el('uploadPublishAt')) el('uploadPublishAt').value=''; renderScheduled(); });
+
+  // live save/clear
+  if(el('saveLiveUrl')) el('saveLiveUrl').addEventListener('click', async ()=>{ if(!window.adminSession) return alert('Login required'); const url = el('liveUrl') ? el('liveUrl').value.trim() : ''; if(!url) return alert('Paste YouTube URL'); await saveLiveLink(url, window.adminSession.username); renderLive(); });
+  if(el('clearLiveUrl')) el('clearLiveUrl').addEventListener('click', async ()=>{ if(!window.adminSession) return alert('Login required'); if(!confirm('Remove live link?')) return; await clearLiveLink(window.adminSession.username); renderLive(); });
+
+  // archive save
+  if(el('archiveSave')) el('archiveSave').addEventListener('click', async function(ev){ ev.preventDefault(); if(!window.adminSession) return alert('Login required'); const f = el('archiveFile') ? el('archiveFile').files[0] : null; const notes = el('archiveNotes') ? el('archiveNotes').value : ''; if(!f) return alert('Choose PDF'); await saveArchiveFile(f, notes, window.adminSession.username); if(el('archiveFile')) el('archiveFile').value=''; if(el('archiveNotes')) el('archiveNotes').value=''; renderArchive(); });
+
+  // export CSV
+  if(el('exportCsv')) el('exportCsv').addEventListener('click', async function(){ const arr = await fetchArchive(); if(!arr.length) return alert('No archive items'); const rows = [['id','filename','notes','createdAt']]; arr.forEach(function(r,i){ rows.push([r.id||i+1, r.filename, r.notes, r.createdAt]); }); const csv = rows.map(r=> r.map(c=> '"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n'); const blob = new Blob([csv], { type:'text/csv' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'dhankesari_archive.csv'; a.click(); URL.revokeObjectURL(url); showToast('Exported CSV'); });
+
+  // search/clear
+  if(el('oldSearchBtn')) el('oldSearchBtn').addEventListener('click', async ()=>{ const q = el('oldSearch') ? (el('oldSearch').value || '').toLowerCase() : ''; const arr = await fetchArchive(); const filtered = arr.filter(i => (i.filename||'').toLowerCase().includes(q) || (i.notes||'').toLowerCase().includes(q)); safeSetHTML('oldList', filtered.length ? filtered.map(it=> `<div class="old-item"><div><strong>${escapeHtml(it.filename)}</strong><div class="muted">${escapeHtml(it.notes||'')} • ${new Date(it.createdAt).toLocaleString()}</div></div></div>`).join('') : '<div class="muted">No archived results</div>'); });
+  if(el('oldClearBtn')) el('oldClearBtn').addEventListener('click', ()=>{ if(el('oldSearch')) el('oldSearch').value=''; renderArchive(); });
+
+  // init
+  initSupabaseUI();
+  renderPublished(); renderArchive(); renderLive(); renderScheduled();
+}catch(err){ console.error('Init error', err); showToast('Initialization error - check console'); } });
+
+</script>
+
+<!--
+  REQUIRED SUPABASE SQL (run in Supabase SQL editor BEFORE using full features):
+
+  -- 1) published table
+  create table if not exists public.published (
+    id bigserial primary key,
+    slot text,
+    filename text,
+    fileUrl text,
+    publishedAt timestamptz,
+    publisher text
+  );
+
+  -- 2) archive table
+  create table if not exists public.archive (
+    id bigserial primary key,
+    filename text,
+    notes text,
+    fileUrl text,
+    createdAt timestamptz,
+    publisher text
+  );
+
+  -- 3) live table (single row id=1 used for current live link)
+  create table if not exists public.live (
+    id int primary key,
+    url text,
+    updatedAt timestamptz,
+    publisher text
+  );
+
+  -- 4) schedules table
+  create table if not exists public.schedules (
+    id bigserial primary key,
+    slot text,
+    filename text,
+    fileUrl text,
+    publishAt timestamptz,
+    publisher text,
+    published boolean default false
+  );
+
+  -- 5) create storage bucket named 'lottery-pdfs' and set public
+-->
+</body>
+</html>
